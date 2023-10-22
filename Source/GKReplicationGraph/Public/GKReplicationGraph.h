@@ -2,30 +2,57 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
-#include "Stats/Stats.h"
-#include "Modules/ModuleManager.h"
+// Gamekit
+#include "GKReplicationGraphModule.h"
+
+// Unreal Engine
+#include "ReplicationGraph.h"
+
+// Generated
+#include "GKReplicationGraph.generated.h"
 
 
-/*
-DECLARE_LOG_CATEGORY_EXTERN(LogGKFoW, Log, All);
-
-#define GKFOG_FATAL(Format, ...)   UE_LOG(LogGKFoW, Fatal, Format, ##__VA_ARGS__)
-#define GKFOG_ERROR(Format, ...)   UE_LOG(LogGKFoW, Error, Format, ##__VA_ARGS__)
-#define GKFOG_WARNING(Format, ...) UE_LOG(LogGKFoW, Warning, Format, ##__VA_ARGS__)
-#define GKFOG_DISPLAY(Format, ...) UE_LOG(LogGKFoW, Display, Format, ##__VA_ARGS__)
-#define GKFOG_LOG(Format, ...)     UE_LOG(LogGKFoW, Log, Format, ##__VA_ARGS__)
-#define GKFOG_VERBOSE(Format, ...) UE_LOG(LogGKFoW, Verbose, Format, ##__VA_ARGS__)
-#define GKFOG_VERYVERBOSE(Format, ...) UE_LOG(LogGKFoW, VeryVerbose, Format, ##__VA_ARGS__)
-
-DECLARE_STATS_GROUP(TEXT("GKReplicationGraph"), STATGROUP_GKFoW, STATCAT_Advanced);
-*/
-
-class FGKReplicationGraphModule : public IModuleInterface
+// To be called in the AGameMode::InitGame ?
+// 
+//  This delegate is called 
+//      1. UReplicationDriver* UReplicationDriver::CreateReplicationDriver(UNetDriver* NetDriver, const FURL& URL, UWorld* World)
+//      2. bool UNetDriver::InitBase(bool bInitAsClient, FNetworkNotify* InNotify, const FURL& URL, bool bReuseAddressAndPort, FString& Error)
+//      3. Called in OnlineSystemSystem
+//
+//
+//
+template<typename T>
+void RegisterReplicationGraph()
 {
+    UReplicationDriver::CreateReplicationDriverDelegate().BindLambda(
+        [](UNetDriver* ForNetDriver, const FURL& URL, UWorld* World) -> UReplicationDriver*
+    {
+        return NewObject<UGKReplicationGraph>(GetTransientPackage());
+    }
+    );
+}
+
+void RegisterReplicationGraph(TSubclassOf<UReplicationGraph> ReplicationGraphClass);
+
+// Manages actor replication for an entire world / net driver
+UCLASS()
+class UGKReplicationGraph : public UReplicationGraph
+{
+    GENERATED_BODY()
 public:
 
-	/** IModuleInterface implementation */
-	virtual void StartupModule() override;
-	virtual void ShutdownModule() override;
+    // Manages actor replication for a specific connection
+    // UNetReplicationGraphConnection
+    // 
+    // UReplicationGraphNode
+    // UReplicationGraphNode_ActorList
+    // UReplicationGraphNode_ActorListFrequencyBuckets
+    // UReplicationGraphNode_AlwaysRelevant
+    // UReplicationGraphNode_AlwaysRelevant_ForConnection 	
+    // UReplicationGraphNode_ConnectionDormancyNode
+    // UReplicationGraphNode_DormancyNode
+    // UReplicationGraphNode_DynamicSpatialFrequency
+    // UReplicationGraphNode_GridCell
+    // UReplicationGraphNode_GridSpatialization2D
+    // UReplicationGraphNode_TearOff_ForConnection
 };

@@ -51,5 +51,11 @@
 				"Linux"
 			]
 		}
+	],
+	"Plugins": [
+		{
+			"Name": "ReplicationGraph",
+			"Enabled":  true
+		}
 	]
 }

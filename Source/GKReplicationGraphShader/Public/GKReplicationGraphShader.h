@@ -5,19 +5,20 @@
 #include "Modules/ModuleManager.h"
 #include "Stats/Stats.h"
 
-/*
-DECLARE_LOG_CATEGORY_EXTERN(LogGKFoWShader, Log, All);
+//*
+DECLARE_LOG_CATEGORY_EXTERN(LogGKRGS, Log, All);
 
-#define GKFOGSHD_FATAL(Format, ...)       UE_LOG(LogGKFoWShader, Fatal, Format, ##__VA_ARGS__)
-#define GKFOGSHD_ERROR(Format, ...)       UE_LOG(LogGKFoWShader, Error, Format, ##__VA_ARGS__)
-#define GKFOGSHD_WARNING(Format, ...)     UE_LOG(LogGKFoWShader, Warning, Format, ##__VA_ARGS__)
-#define GKFOGSHD_DISPLAY(Format, ...)     UE_LOG(LogGKFoWShader, Display, Format, ##__VA_ARGS__)
-#define GKFOGSHD_LOG(Format, ...)         UE_LOG(LogGKFoWShader, Log, Format, ##__VA_ARGS__)
-#define GKFOGSHD_VERBOSE(Format, ...)     UE_LOG(LogGKFoWShader, Verbose, Format, ##__VA_ARGS__)
-#define GKFOGSHD_VERYVERBOSE(Format, ...) UE_LOG(LogGKFoWShader, VeryVerbose, Format, ##__VA_ARGS__)
+#define GKRGS_FATAL(Format, ...)   UE_LOG(LogGKRGS, Fatal, Format, ##__VA_ARGS__)
+#define GKRGS_ERROR(Format, ...)   UE_LOG(LogGKRGS, Error, Format, ##__VA_ARGS__)
+#define GKRGS_WARNING(Format, ...) UE_LOG(LogGKRGS, Warning, Format, ##__VA_ARGS__)
+#define GKRGS_DISPLAY(Format, ...) UE_LOG(LogGKRGS, Display, Format, ##__VA_ARGS__)
+#define GKRGS_LOG(Format, ...)     UE_LOG(LogGKRGS, Log, Format, ##__VA_ARGS__)
+#define GKRGS_VERBOSE(Format, ...) UE_LOG(LogGKRGS, Verbose, Format, ##__VA_ARGS__)
+#define GKRGS_VERYVERBOSE(Format, ...) UE_LOG(LogGKRGS, VeryVerbose, Format, ##__VA_ARGS__)
 
-DECLARE_STATS_GROUP(TEXT("GKReplicationGraphShader"), STATGROUP_GKFoWShader, STATCAT_Advanced);
-*/
+DECLARE_STATS_GROUP(TEXT("GKReplicationGraph"), STATGROUP_GKRGS, STATCAT_Advanced);
+//*/
+
 
 class FGKReplicationGraphShaderModule: public IModuleInterface
 {

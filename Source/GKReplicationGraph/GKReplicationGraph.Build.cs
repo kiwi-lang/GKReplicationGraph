@@ -19,6 +19,7 @@ public class GKReplicationGraph : ModuleRules
         PublicDependencyModuleNames.AddRange(new string[] {
                 "Core",
                 "GKReplicationGraphShader",
+                "ReplicationGraph",
         });
 
         PrivateDependencyModuleNames.AddRange(new string[] {

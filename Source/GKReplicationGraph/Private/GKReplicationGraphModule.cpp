@@ -1,8 +1,9 @@
 // Copyright 2023 Mischievous Game, Inc. All Rights Reserved.
 
-#include "GKReplicationGraphShader.h"
+// Include
+#include "GKReplicationGraphModule.h"
 
-DEFINE_LOG_CATEGORY(LogGKRGS)
+DEFINE_LOG_CATEGORY(LogGKRG)
 
 // Unreal Engine
 #include "Engine/Blueprint.h"
@@ -10,7 +11,7 @@ DEFINE_LOG_CATEGORY(LogGKRGS)
 #include "Modules/ModuleManager.h"
 #include "ShaderCore.h"
 
-#define LOCTEXT_NAMESPACE "FGKReplicationGraphShaderModule"
+#define LOCTEXT_NAMESPACE "FGKReplicationGraphModule"
 
 static bool AddShaderPath(FString Path, FString Mapping) {
     // Make sure the mapping does not exist before adding it
@@ -47,16 +48,16 @@ static void EnsureShaderPathIsConfigured() {
     else {
         FString const* Mapped = AllShaderSourceDirectoryMappings().Find(VirtualShaderPath);
 
-        GKRGS_LOG(TEXT("Using %s mapped to %s"), *VirtualShaderPath, **Mapped);
+        GKRG_LOG(TEXT("Using %s mapped to %s"), *VirtualShaderPath, **Mapped);
     }
 }
 
-void FGKReplicationGraphShaderModule::StartupModule()
+void FGKReplicationGraphModule::StartupModule()
 {
     EnsureShaderPathIsConfigured();
 }
 
-void FGKReplicationGraphShaderModule::ShutdownModule()
+void FGKReplicationGraphModule::ShutdownModule()
 {
     // This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
     // we call this function before unloading the module.
@@ -65,4 +66,4 @@ void FGKReplicationGraphShaderModule::ShutdownModule()
 
 #undef LOCTEXT_NAMESPACE
 
-IMPLEMENT_MODULE(FGKReplicationGraphShaderModule, GKReplicationGraphShader)
+IMPLEMENT_MODULE(FGKReplicationGraphModule, GKReplicationGraph)
