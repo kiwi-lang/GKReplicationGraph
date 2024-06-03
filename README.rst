@@ -1,6 +1,7 @@
 GKReplicationGraph
 ============================
 
+Extracted from Lyra Example
 
 Features
 --------
