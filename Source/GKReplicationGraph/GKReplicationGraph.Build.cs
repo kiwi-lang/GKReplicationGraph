@@ -18,7 +18,6 @@ public class GKReplicationGraph : ModuleRules
         // ... add other public dependencies that you statically link with here ...
         PublicDependencyModuleNames.AddRange(new string[] {
                 "Core",
-                "GKReplicationGraphShader",
                 "ReplicationGraph",
         });
 
@@ -27,17 +26,20 @@ public class GKReplicationGraph : ModuleRules
                 "Engine",
                 "Slate",
                 "SlateCore",
+                "GameplayDebugger",
 
                 "RenderCore",   // Custom Shader
 				"AIModule",	    // TeamAgent Interface
 				"Landscape",    // Landscape
                 "RHI",          // Shader
+
+                "DeveloperSettings",
         });
 
         // Version Info
         // ------------
         // Automatically set by the CI
-        string GKReplicationGraph_TAG = "v1.2.0";
+        string GKReplicationGraph_TAG = "v1.0.0";
         string GKReplicationGraph_HASH = "fd5965b0a334ba5784929aac36716dbf0e9fb9fb";
         string GKReplicationGraph_DATE = "2023-01-15 03:23:34 +0000";
 

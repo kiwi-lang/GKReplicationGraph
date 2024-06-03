@@ -24,7 +24,6 @@ public class GKReplicationGraphEd : ModuleRules
                 "SlateCore",
 
                 "GKReplicationGraph",
-                "GKReplicationGraphShader",
 
                 "UnrealEd",
         

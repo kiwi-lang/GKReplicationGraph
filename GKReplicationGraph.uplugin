@@ -25,15 +25,6 @@
 			]
 		},
 		{
-			"Name": "GKReplicationGraphShader",
-			"Type": "Runtime",
-			"LoadingPhase": "PostConfigInit",
-			"PlatformAllowList": [
-				"Win64",
-				"Linux"
-			]
-		},
-		{
 			"Name": "GKReplicationGraphEd",
 			"Type": "Editor",
 			"LoadingPhase": "Default",

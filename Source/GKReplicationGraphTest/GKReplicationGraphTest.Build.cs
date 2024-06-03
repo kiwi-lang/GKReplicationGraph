@@ -19,7 +19,6 @@ public class GKReplicationGraphTest : ModuleRules
         PublicDependencyModuleNames.AddRange(new string[] {
                 "Core",
                 "GKReplicationGraph",
-                "GKReplicationGraphShader",
         });
 
         PrivateDependencyModuleNames.AddRange(new string[] {
